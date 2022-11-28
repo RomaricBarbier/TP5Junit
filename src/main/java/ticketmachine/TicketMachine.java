@@ -62,7 +62,10 @@ public class TicketMachine {
 	 * @param amount the amount inserted, in cents (positive)
 	 * @throws IllegalArgumentException if amount is not positive
 	 */
-	public void insertMoney(int amount) {
+	public void insertMoney(int amount) throws IllegalArgumentException{
+		if(amount<0){
+			throw new IllegalArgumentException("amount doit etre positif");
+		}
 		balance = balance + amount;
 	}
 
@@ -72,9 +75,10 @@ public class TicketMachine {
 	 * @return the balance
 	 */
 	public int refund() {
+		int monnaieR = this.balance;
 		System.out.println("Je vous rends : " + balance + " centimes");
 		this.balance=0;
-		return balance;
+		return monnaieR;
 	}
 
 	/**

@@ -73,4 +73,19 @@ public class TicketMachineTest {
 		machine.refund();
 		assertEquals(0,machine.getBalance());
 	}
+
+
+	@Test
+	//S9
+	public void pasdevaleurnegative(){
+		machine.insertMoney(PRICE);
+		assertThrows(IllegalArgumentException.class,()->{machine.insertMoney(-10);},"Cet appel doit leve une exeption");
+	}
+
+	@Test
+	//S10
+	public void pascréermachinedontprixnegatif(){
+		assertThrows(IllegalArgumentException.class,()->{TicketMachine machine2= new TicketMachine(-10);},"Cet appel doit leve une exeption");
+	}
+
 }
